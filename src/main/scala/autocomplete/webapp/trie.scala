@@ -33,21 +33,15 @@ case class PrefixTrie(chr: Option[Char] = None, letters: List[Char] = List[Char]
   case Nil =>
    //get all, if anymore exist
    val updatedFound = accumulateWord(found)
-   getAllPossibilities(updatedFound)
+   updatedFound ++ getAllPossibilities
   case head::tail =>
      //keep going along matching trail
      //if stop matching, return found
      val matchingChild = getMatchingChild(head)
-     val ms = matchingChild.map(child => child.findMatches(tail, found)).getOrElse(found)
-     ms
+     matchingChild.map(_.findMatches(tail, found)).getOrElse(found)
  }
 
- def getAllPossibilities(found: List[String]): List[String] = {
-  if (children.nonEmpty) {
-   children.flatMap(child => child.findMatches(List[Char](), found))
-  }
-  else found
- }
+ def getAllPossibilities: List[String] = children.flatMap(_.findMatches())
 
  def getMatchingChild(chr: Char): Option[PrefixTrie] = {
   for {
