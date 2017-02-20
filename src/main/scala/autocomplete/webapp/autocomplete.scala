@@ -4,6 +4,7 @@ import main.scala.autocomplete.webapp.PrefixTrie
 import scala.scalajs.js.JSApp
 import org.scalajs.dom
 import dom._
+import window.{ clearTimeout, setTimeout }
 import org.scalajs.dom.html._
 import scalatags.JsDom.all._
 
@@ -24,6 +25,7 @@ object DOM {
     val i: Input = input.render
     val u: UList = ul.render
     val container: Div = div.render
+    val debouncer: () => Unit = getDebouncer(onKeyUp)
 
     i.setAttribute("id", "input")
     u.setAttribute("id", "suggestions")
@@ -40,6 +42,10 @@ object DOM {
     )
 
     i.onkeyup = (e: dom.Event) => {
+      debouncer()
+    }
+
+    def onKeyUp(): Unit = {
       val output = i.value
       val lastWord = getLastWord(output)
       addWordToHist(lastWord)
@@ -52,6 +58,16 @@ object DOM {
       } else {
         removeAllLiElements
       }
+    }
+
+    def getDebouncer(F: () => Unit): () => Unit = {
+      var timeout = 0
+
+      def debounce(): Unit = {
+        clearTimeout(timeout)
+        timeout = setTimeout(() => F(), 200)
+      }
+      debounce
     }
 
     def appendLIElements(liElements: List[LI]): UList = {
@@ -79,6 +95,7 @@ object DOM {
     }
 
     def getLastWord(content: String): String = getWords(content).last
+
     def getWords(content: String): List[String] = content.split(" ").toList
 
   }
