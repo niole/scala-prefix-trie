@@ -1,13 +1,18 @@
 package main.scala.autocomplete.webapp
 
 
-case class PrefixTrie(chr: Option[Char] = None, letters: List[Char] = List[Char](), private val word: String = "", var children: List[PrefixTrie] = List[PrefixTrie]()) {
+case class PrefixTrie(
+    chr: Option[Char] = None,
+    letters: List[Char] = List[Char](),
+    private val word: String = "",
+    var children: List[PrefixTrie] = List[PrefixTrie]()
+  ) {
  children = addWord(letters, word)
  var fullWord = ""
  setWord(word)
 
- def getWord: String = fullWord
- def setWord(newWord: String): Unit = {
+ private[this] def getWord: String = fullWord
+ private[this] def setWord(newWord: String): Unit = {
   if (letters.isEmpty) {
    fullWord = newWord
   }
@@ -20,7 +25,7 @@ case class PrefixTrie(chr: Option[Char] = None, letters: List[Char] = List[Char]
    children
  }
 
- def accumulateWord(found: List[String]): List[String] = {
+ private[this] def accumulateWord(found: List[String]): List[String] = {
   val foundWord = getWord
   var foundWords = found
   if (foundWord != "") {
@@ -41,9 +46,9 @@ case class PrefixTrie(chr: Option[Char] = None, letters: List[Char] = List[Char]
      matchingChild.map(_.findMatches(tail, found)).getOrElse(found)
  }
 
- def getAllPossibilities: List[String] = children.flatMap(_.findMatches())
+ private[this] def getAllPossibilities: List[String] = children.flatMap(_.findMatches())
 
- def getMatchingChild(chr: Char): Option[PrefixTrie] = {
+ private[this] def getMatchingChild(chr: Char): Option[PrefixTrie] = {
   for {
    child <- children
   } {
