@@ -3,6 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Autocomplete</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+
+    <style>
+      body {
+        background: #ffffff;
+        margin: 0;
+        height: 100%;
+        color: #384452;
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+      }
+
+      *:focus {
+        outline: none;
+      }
+
+      input {
+        width: 205px;
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 2px;
+        font-family: 'Lato', sans-serif;
+      }
+
+      li:hover, input:hover {
+        border-color: rgba(34,36,38,.35);
+        box-shadow: none;
+      }
+
+      ul {
+        margin-top: 0px;
+        list-style: none;
+        width: 206px;
+        text-align: left;
+        margin-left: 46px;
+      }
+
+      li {
+        padding: 10px;
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 2px;
+        width: 100%;
+        background: #00B5AD;
+        margin-bottom: 10px;
+        color: white;
+      }
+
+      body > div {
+        width: 400px;
+        margin: 100px auto;
+        text-align: center;
+      }
+
+    </style>
 </head>
 <body>
 <!-- Include Scala.js compiled code -->

@@ -22,7 +22,10 @@ object DOM {
     val pT = PrefixTrie()
     val i: Input = input.render
     i.setAttribute("id", "input")
-    val s: Span = span.render
+
+    val u: UList = ul.render
+    u.setAttribute("id", "suggestions")
+
     val container: Div = div.render
 
     document.body.appendChild(
@@ -30,21 +33,50 @@ object DOM {
         div(
           h1("Autocomplete"),
           div(i),
-          s
+          u
         ).render
       )
     )
 
     i.onkeyup = (e: dom.Event) => {
       val output = i.value
-      val chrs = output.toList
-      pT.addWord(chrs, output)
+      val lastWord = getLastWord(output)
+
       if (output != "") {
-        s.textContent = pT.findMatches(chrs).mkString(", ")
+        val chrs = lastWord.toList
+        pT.addWord(chrs, lastWord)
+        val LIs = getRenderedMatches(chrs)
+        appendLIElements(LIs)
       } else {
-       s.textContent = ""
+        removeAllLiElements
       }
     }
+
+    def appendLIElements(liElements: List[LI]): UList = {
+      removeAllLiElements
+      for {
+        liElt <- liElements
+      } {
+        u.appendChild(liElt)
+      }
+
+      u
+    }
+
+    def removeAllLiElements: Unit = {
+      u.innerHTML = ""
+    }
+
+    def getRenderedMatches(lastWord: List[Char]): List[LI] = {
+      val matches = pT.findMatches(lastWord)
+      for {
+        m <- matches
+      } yield li(m).render
+    }
+
+    def getLastWord(content: String): String = getWords(content).last
+    def getWords(content: String): List[String] = content.split(" ").toList
+
   }
 
 }
