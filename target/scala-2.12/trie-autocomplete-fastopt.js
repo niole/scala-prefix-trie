@@ -1039,6 +1039,18 @@ function $isArrayOf_Lscalatags_generic_Modifier(obj, depth) {
 function $asArrayOf_Lscalatags_generic_Modifier(obj, depth) {
   return (($isArrayOf_Lscalatags_generic_Modifier(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscalatags.generic.Modifier;", depth))
 }
+function $is_Lscalatags_generic_Namespace(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lscalatags_generic_Namespace)))
+}
+function $as_Lscalatags_generic_Namespace(obj) {
+  return (($is_Lscalatags_generic_Namespace(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scalatags.generic.Namespace"))
+}
+function $isArrayOf_Lscalatags_generic_Namespace(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lscalatags_generic_Namespace)))
+}
+function $asArrayOf_Lscalatags_generic_Namespace(obj, depth) {
+  return (($isArrayOf_Lscalatags_generic_Namespace(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscalatags.generic.Namespace;", depth))
+}
 /** @constructor */
 function $c_O() {
   /*<skip>*/
@@ -1399,7 +1411,7 @@ $c_Lautocomplete_webapp_DOM$InputBox.prototype.init___ = (function() {
   this.wordUseHist$1 = $as_sci_Map($m_s_Predef$().Map$2.apply__sc_Seq__sc_GenMap($m_sci_Nil$())).withDefaultValue__O__sci_Map(0);
   this.pT$1 = new $c_Lmain_scala_autocomplete_webapp_PrefixTrie().init___s_Option__sci_List__T__sci_List($m_s_None$(), $m_sci_Nil$(), "", $m_sci_Nil$());
   var this$4 = $m_Lscalatags_JsDom$all$();
-  this.i$1 = this$4.input__Lscalatags_JsDom$TypedTag().render__Lorg_scalajs_dom_raw_Element();
+  this.i$1 = this$4.input__Lscalatags_JsDom$TypedTag().apply__sc_Seq__Lscalatags_JsDom$TypedTag(new $c_sjs_js_WrappedArray().init___sjs_js_Array([$m_Lscalatags_JsDom$short$$times$().placeholder__Lscalatags_generic_Attr().$$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair("trie me out", $m_Lscalatags_JsDom$all$().stringAttr$1)])).render__Lorg_scalajs_dom_raw_Element();
   var this$5 = $m_Lscalatags_JsDom$all$();
   this.u$1 = this$5.ul__Lscalatags_JsDom$TypedTag().render__Lorg_scalajs_dom_raw_Element();
   var this$6 = $m_Lscalatags_JsDom$all$();
@@ -1409,8 +1421,6 @@ $c_Lautocomplete_webapp_DOM$InputBox.prototype.init___ = (function() {
       $this.onKeyUp__V()
     })
   })(this)));
-  this.i$1.setAttribute("id", "input");
-  this.u$1.setAttribute("id", "suggestions");
   var jsx$7 = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().body;
   var jsx$6 = this.container$1;
   var this$7 = $m_Lscalatags_JsDom$all$();
@@ -1536,6 +1546,10 @@ $c_Lautocomplete_webapp_DOM$InputBox.prototype.appendLIElements__sci_List__Lorg_
   };
   return this.u$1
 });
+$c_Lautocomplete_webapp_DOM$InputBox.prototype.getLastWord__T__T = (function(content) {
+  var this$1 = this.getWords__T__sci_List(content);
+  return $as_T($f_sc_LinearSeqOptimized__last__O(this$1))
+});
 $c_Lautocomplete_webapp_DOM$InputBox.prototype.debounce$1__p1__F0__sr_IntRef__V = (function(F$1, timeout$1) {
   $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().clearTimeout(timeout$1.elem$1);
   timeout$1.elem$1 = $uI($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().setTimeout((function(arg$outer, F$1$1) {
@@ -1543,10 +1557,6 @@ $c_Lautocomplete_webapp_DOM$InputBox.prototype.debounce$1__p1__F0__sr_IntRef__V 
       F$1$1.apply__O()
     })
   })(this, F$1), 200.0))
-});
-$c_Lautocomplete_webapp_DOM$InputBox.prototype.getLastWord__T__T = (function(content) {
-  var this$1 = this.getWords__T__sci_List(content);
-  return $as_T($f_sc_LinearSeqOptimized__last__O(this$1))
 });
 $c_Lautocomplete_webapp_DOM$InputBox.prototype.removeAllLiElements__V = (function() {
   this.u$1.innerHTML = ""
@@ -3427,6 +3437,26 @@ $h_Lscalatags_JsDom$GenericAttr.prototype = $c_Lscalatags_JsDom$GenericAttr.prot
 $c_Lscalatags_JsDom$GenericAttr.prototype.init___ = (function() {
   return this
 });
+$c_Lscalatags_JsDom$GenericAttr.prototype.apply__Lorg_scalajs_dom_raw_Element__Lscalatags_generic_Attr__O__V = (function(t, a, v) {
+  var x1 = a.namespace$1;
+  var x = $m_s_None$();
+  if ((x === x1)) {
+    if ((!a.raw$1)) {
+      t.setAttribute(a.name$1, $objectToString(v))
+    } else {
+      var tmpElm = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createElement("p");
+      tmpElm.innerHTML = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["<p ", "=\"", "\"><p>"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([a.name$1, $objectToString(v)]));
+      var newAttr = tmpElm.children[0].attributes[0].cloneNode(true);
+      t.setAttributeNode(newAttr)
+    }
+  } else if ($is_s_Some(x1)) {
+    var x2 = $as_s_Some(x1);
+    var namespace = $as_Lscalatags_generic_Namespace(x2.value$2);
+    t.setAttributeNS(namespace.uri__T(), a.name$1, $objectToString(v))
+  } else {
+    throw new $c_s_MatchError().init___O(x1)
+  }
+});
 var $d_Lscalatags_JsDom$GenericAttr = new $TypeData().initClass({
   Lscalatags_JsDom$GenericAttr: 0
 }, false, "scalatags.JsDom$GenericAttr", {
@@ -3506,7 +3536,7 @@ var $d_Lscalatags_JsDom$GenericStyle = new $TypeData().initClass({
 });
 $c_Lscalatags_JsDom$GenericStyle.prototype.$classData = $d_Lscalatags_JsDom$GenericStyle;
 function $f_Lscalatags_generic_MouseEventAttrs__$$init$__V($thiz) {
-  $thiz.ondrag$1 = $f_Lscalatags_generic_Util__attr__T__Lscalatags_generic_Namespace__Z__Lscalatags_generic_Attr($thiz, "ondrag", null, false)
+  $thiz.scalatags$generic$MouseEventAttrs$$undsetter$und$ondrag$und$eq__Lscalatags_generic_Attr__V($f_Lscalatags_generic_Util__attr__T__Lscalatags_generic_Namespace__Z__Lscalatags_generic_Attr($thiz, "ondrag", null, false))
 }
 /** @constructor */
 function $c_Lscalatags_generic_Namespace$$anon$1() {
@@ -3606,8 +3636,7 @@ function $f_Lscalatags_generic_TypedTag__build__O__V($thiz, b) {
     var frag = arr.u[j];
     var i$2 = 0;
     while ((i$2 < frag.length__I())) {
-      var this$3 = $as_Lscalatags_generic_Modifier(frag.apply__I__O(i$2));
-      this$3.applyTo__Lorg_scalajs_dom_raw_Element__V(b);
+      $as_Lscalatags_generic_Modifier(frag.apply__I__O(i$2)).applyTo__O__V(b);
       i$2 = ((1 + i$2) | 0)
     }
   }
@@ -4403,6 +4432,9 @@ $h_Lscalatags_LowPriorityImplicits$bindNode.prototype = $c_Lscalatags_LowPriorit
 $c_Lscalatags_LowPriorityImplicits$bindNode.prototype.applyTo__Lorg_scalajs_dom_raw_Element__V = (function(t) {
   t.appendChild(this.e$1)
 });
+$c_Lscalatags_LowPriorityImplicits$bindNode.prototype.applyTo__O__V = (function(t) {
+  this.applyTo__Lorg_scalajs_dom_raw_Element__V(t)
+});
 $c_Lscalatags_LowPriorityImplicits$bindNode.prototype.init___Lscalatags_LowPriorityImplicits__Lorg_scalajs_dom_raw_Node = (function($$outer, e) {
   this.e$1 = e;
   if (($$outer === null)) {
@@ -4953,11 +4985,6 @@ function $h_s_Predef$() {
   /*<skip>*/
 }
 $h_s_Predef$.prototype = $c_s_Predef$.prototype;
-$c_s_Predef$.prototype.assert__Z__V = (function(assertion) {
-  if ((!assertion)) {
-    throw new $c_jl_AssertionError().init___O("assertion failed")
-  }
-});
 $c_s_Predef$.prototype.init___ = (function() {
   $n_s_Predef$ = this;
   $m_s_package$();
@@ -4971,6 +4998,11 @@ $c_s_Predef$.prototype.init___ = (function() {
   this.singleton$und$less$colon$less$2 = new $c_s_Predef$$anon$1().init___();
   this.scala$Predef$$singleton$und$eq$colon$eq$f = new $c_s_Predef$$anon$2().init___();
   return this
+});
+$c_s_Predef$.prototype.assert__Z__V = (function(assertion) {
+  if ((!assertion)) {
+    throw new $c_jl_AssertionError().init___O("assertion failed")
+  }
 });
 $c_s_Predef$.prototype.require__Z__V = (function(requirement) {
   if ((!requirement)) {
@@ -6543,13 +6575,13 @@ $h_sc_AbstractIterator.prototype = $c_sc_AbstractIterator.prototype;
 $c_sc_AbstractIterator.prototype.seq__sc_TraversableOnce = (function() {
   return this
 });
+$c_sc_AbstractIterator.prototype.isEmpty__Z = (function() {
+  return $f_sc_Iterator__isEmpty__Z(this)
+});
 $c_sc_AbstractIterator.prototype.toList__sci_List = (function() {
   var this$1 = $m_sci_List$();
   var cbf = this$1.ReusableCBFInstance$2;
   return $as_sci_List($f_sc_TraversableOnce__to__scg_CanBuildFrom__O(this, cbf))
-});
-$c_sc_AbstractIterator.prototype.isEmpty__Z = (function() {
-  return $f_sc_Iterator__isEmpty__Z(this)
 });
 $c_sc_AbstractIterator.prototype.toString__T = (function() {
   return $f_sc_Iterator__toString__T(this)
@@ -7269,15 +7301,6 @@ $c_Lscalatags_generic_Attr.prototype.equals__O__Z = (function(x$1) {
     return false
   }
 });
-$c_Lscalatags_generic_Attr.prototype.init___T__s_Option__Z = (function(name, namespace, raw) {
-  this.name$1 = name;
-  this.namespace$1 = namespace;
-  this.raw$1 = raw;
-  if (((!raw) && (!$m_Lscalatags_Escaping$().validAttrName__T__Z(name)))) {
-    throw new $c_jl_IllegalArgumentException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Illegal attribute name: ", " is not a valid XML attribute name"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([name])))
-  };
-  return this
-});
 $c_Lscalatags_generic_Attr.prototype.productElement__I__O = (function(x$1) {
   switch (x$1) {
     case 0: {
@@ -7297,8 +7320,23 @@ $c_Lscalatags_generic_Attr.prototype.productElement__I__O = (function(x$1) {
     }
   }
 });
+$c_Lscalatags_generic_Attr.prototype.init___T__s_Option__Z = (function(name, namespace, raw) {
+  this.name$1 = name;
+  this.namespace$1 = namespace;
+  this.raw$1 = raw;
+  if (((!raw) && (!$m_Lscalatags_Escaping$().validAttrName__T__Z(name)))) {
+    throw new $c_jl_IllegalArgumentException().init___T(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["Illegal attribute name: ", " is not a valid XML attribute name"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([name])))
+  };
+  return this
+});
 $c_Lscalatags_generic_Attr.prototype.toString__T = (function() {
   return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
+});
+$c_Lscalatags_generic_Attr.prototype.$$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair = (function(v, ev) {
+  if ((v === null)) {
+    throw new $c_jl_NullPointerException().init___()
+  };
+  return new $c_Lscalatags_generic_AttrPair().init___Lscalatags_generic_Attr__O__Lscalatags_generic_AttrValue(this, v, ev)
 });
 $c_Lscalatags_generic_Attr.prototype.hashCode__I = (function() {
   var acc = (-889275714);
@@ -8850,6 +8888,9 @@ $c_Lscalatags_JsDom$RawFrag.prototype.toString__T = (function() {
 $c_Lscalatags_JsDom$RawFrag.prototype.applyTo__Lorg_scalajs_dom_raw_Element__V = (function(elem) {
   elem.insertAdjacentHTML("beforeend", this.v$1)
 });
+$c_Lscalatags_JsDom$RawFrag.prototype.applyTo__O__V = (function(t) {
+  this.applyTo__Lorg_scalajs_dom_raw_Element__V(t)
+});
 $c_Lscalatags_JsDom$RawFrag.prototype.init___T = (function(v) {
   this.v$1 = v;
   if ((v === null)) {
@@ -8888,6 +8929,109 @@ var $d_Lscalatags_JsDom$RawFrag = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_Lscalatags_JsDom$RawFrag.prototype.$classData = $d_Lscalatags_JsDom$RawFrag;
+/** @constructor */
+function $c_Lscalatags_generic_AttrPair() {
+  $c_O.call(this);
+  this.a$1 = null;
+  this.v$1 = null;
+  this.ev$1 = null
+}
+$c_Lscalatags_generic_AttrPair.prototype = new $h_O();
+$c_Lscalatags_generic_AttrPair.prototype.constructor = $c_Lscalatags_generic_AttrPair;
+/** @constructor */
+function $h_Lscalatags_generic_AttrPair() {
+  /*<skip>*/
+}
+$h_Lscalatags_generic_AttrPair.prototype = $c_Lscalatags_generic_AttrPair.prototype;
+$c_Lscalatags_generic_AttrPair.prototype.productPrefix__T = (function() {
+  return "AttrPair"
+});
+$c_Lscalatags_generic_AttrPair.prototype.productArity__I = (function() {
+  return 3
+});
+$c_Lscalatags_generic_AttrPair.prototype.equals__O__Z = (function(x$1) {
+  if ((this === x$1)) {
+    return true
+  } else if ($is_Lscalatags_generic_AttrPair(x$1)) {
+    var AttrPair$1 = $as_Lscalatags_generic_AttrPair(x$1);
+    var x = this.a$1;
+    var x$2 = AttrPair$1.a$1;
+    if ((((x === null) ? (x$2 === null) : x.equals__O__Z(x$2)) && $m_sr_BoxesRunTime$().equals__O__O__Z(this.v$1, AttrPair$1.v$1))) {
+      var x$3 = this.ev$1;
+      var x$4 = AttrPair$1.ev$1;
+      return (x$3 === x$4)
+    } else {
+      return false
+    }
+  } else {
+    return false
+  }
+});
+$c_Lscalatags_generic_AttrPair.prototype.productElement__I__O = (function(x$1) {
+  switch (x$1) {
+    case 0: {
+      return this.a$1;
+      break
+    }
+    case 1: {
+      return this.v$1;
+      break
+    }
+    case 2: {
+      return this.ev$1;
+      break
+    }
+    default: {
+      throw new $c_jl_IndexOutOfBoundsException().init___T(("" + x$1))
+    }
+  }
+});
+$c_Lscalatags_generic_AttrPair.prototype.init___Lscalatags_generic_Attr__O__Lscalatags_generic_AttrValue = (function(a, v, ev) {
+  this.a$1 = a;
+  this.v$1 = v;
+  this.ev$1 = ev;
+  return this
+});
+$c_Lscalatags_generic_AttrPair.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
+});
+$c_Lscalatags_generic_AttrPair.prototype.applyTo__O__V = (function(t) {
+  var this$1 = this.ev$1;
+  var a = this.a$1;
+  var v = this.v$1;
+  this$1.apply__Lorg_scalajs_dom_raw_Element__Lscalatags_generic_Attr__O__V(t, a, v)
+});
+$c_Lscalatags_generic_AttrPair.prototype.hashCode__I = (function() {
+  var this$2 = $m_s_util_hashing_MurmurHash3$();
+  return this$2.productHash__s_Product__I__I(this, (-889275714))
+});
+$c_Lscalatags_generic_AttrPair.prototype.productIterator__sc_Iterator = (function() {
+  return new $c_sr_ScalaRunTime$$anon$1().init___s_Product(this)
+});
+function $is_Lscalatags_generic_AttrPair(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lscalatags_generic_AttrPair)))
+}
+function $as_Lscalatags_generic_AttrPair(obj) {
+  return (($is_Lscalatags_generic_AttrPair(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scalatags.generic.AttrPair"))
+}
+function $isArrayOf_Lscalatags_generic_AttrPair(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lscalatags_generic_AttrPair)))
+}
+function $asArrayOf_Lscalatags_generic_AttrPair(obj, depth) {
+  return (($isArrayOf_Lscalatags_generic_AttrPair(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscalatags.generic.AttrPair;", depth))
+}
+var $d_Lscalatags_generic_AttrPair = new $TypeData().initClass({
+  Lscalatags_generic_AttrPair: 0
+}, false, "scalatags.generic.AttrPair", {
+  Lscalatags_generic_AttrPair: 1,
+  O: 1,
+  Lscalatags_generic_Modifier: 1,
+  s_Product: 1,
+  s_Equals: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lscalatags_generic_AttrPair.prototype.$classData = $d_Lscalatags_generic_AttrPair;
 /** @constructor */
 function $c_T2() {
   $c_O.call(this);
@@ -10136,8 +10280,8 @@ $c_Lscalatags_JsDom$StringFrag.prototype.productElement__I__O = (function(x$1) {
 $c_Lscalatags_JsDom$StringFrag.prototype.toString__T = (function() {
   return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
 });
-$c_Lscalatags_JsDom$StringFrag.prototype.applyTo__Lorg_scalajs_dom_raw_Element__V = (function(b) {
-  $f_Lscalatags_jsdom_Frag__applyTo__Lorg_scalajs_dom_raw_Element__V(this, b)
+$c_Lscalatags_JsDom$StringFrag.prototype.applyTo__O__V = (function(t) {
+  $f_Lscalatags_jsdom_Frag__applyTo__Lorg_scalajs_dom_raw_Element__V(this, t)
 });
 $c_Lscalatags_JsDom$StringFrag.prototype.render__Lorg_scalajs_dom_raw_Text = (function() {
   return $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createTextNode(this.v$1)
@@ -10606,8 +10750,8 @@ $c_Lscalatags_JsDom$TypedTag.prototype.productElement__I__O = (function(x$1) {
 $c_Lscalatags_JsDom$TypedTag.prototype.toString__T = (function() {
   return $as_T(this.render__Lorg_scalajs_dom_raw_Element().outerHTML)
 });
-$c_Lscalatags_JsDom$TypedTag.prototype.applyTo__Lorg_scalajs_dom_raw_Element__V = (function(b) {
-  $f_Lscalatags_jsdom_Frag__applyTo__Lorg_scalajs_dom_raw_Element__V(this, b)
+$c_Lscalatags_JsDom$TypedTag.prototype.applyTo__O__V = (function(t) {
+  $f_Lscalatags_jsdom_Frag__applyTo__Lorg_scalajs_dom_raw_Element__V(this, t)
 });
 $c_Lscalatags_JsDom$TypedTag.prototype.render__Lorg_scalajs_dom_raw_Node = (function() {
   return this.render__Lorg_scalajs_dom_raw_Element()
@@ -11938,6 +12082,345 @@ var $d_sci_Iterable = new $TypeData().initClass({
   s_Equals: 1
 });
 /** @constructor */
+function $c_Lscalatags_JsDom$short$$times$() {
+  $c_O.call(this);
+  this.backgroundAttachment$module$1 = null;
+  this.background$1 = null;
+  this.backgroundRepeat$1 = null;
+  this.backgroundPosition$1 = null;
+  this.backgroundColor$1 = null;
+  this.backgroundOrigin$module$1 = null;
+  this.backgroundClip$module$1 = null;
+  this.backgroundSize$module$1 = null;
+  this.backgroundImage$1 = null;
+  this.borderTopColor$1 = null;
+  this.borderStyle$1 = null;
+  this.borderTopStyle$1 = null;
+  this.borderRightStyle$1 = null;
+  this.borderRightWidth$1 = null;
+  this.borderTopRightRadius$1 = null;
+  this.borderBottomLeftRadius$1 = null;
+  this.borderRightColor$1 = null;
+  this.borderBottom$1 = null;
+  this.border$1 = null;
+  this.borderBottomWidth$1 = null;
+  this.borderLeftColor$1 = null;
+  this.borderBottomColor$1 = null;
+  this.borderCollapse$module$1 = null;
+  this.borderLeft$1 = null;
+  this.borderLeftStyle$1 = null;
+  this.borderRight$1 = null;
+  this.borderBottomStyle$1 = null;
+  this.borderLeftWidth$1 = null;
+  this.borderTopWidth$1 = null;
+  this.borderTop$1 = null;
+  this.borderSpacing$module$1 = null;
+  this.borderRadius$1 = null;
+  this.borderWidth$1 = null;
+  this.borderBottomRightRadius$1 = null;
+  this.borderTopLeftRadius$1 = null;
+  this.borderColor$1 = null;
+  this.boxSizing$module$1 = null;
+  this.color$module$1 = null;
+  this.clip$module$1 = null;
+  this.cursor$module$1 = null;
+  this.float$module$1 = null;
+  this.direction$module$1 = null;
+  this.display$module$1 = null;
+  this.pointerEvents$module$1 = null;
+  this.listStyleImage$module$1 = null;
+  this.listStylePosition$module$1 = null;
+  this.wordWrap$module$1 = null;
+  this.opacity$1 = null;
+  this.maxWidth$1 = null;
+  this.verticalAlign$module$1 = null;
+  this.overflow$module$1 = null;
+  this.mask$module$1 = null;
+  this.emptyCells$module$1 = null;
+  this.height$1 = null;
+  this.paddingRight$1 = null;
+  this.paddingTop$1 = null;
+  this.paddingLeft$1 = null;
+  this.padding$1 = null;
+  this.paddingBottom$1 = null;
+  this.right$1 = null;
+  this.lineHeight$1 = null;
+  this.left$1 = null;
+  this.listStyleType$module$1 = null;
+  this.listStyle$1 = null;
+  this.overflowY$1 = null;
+  this.captionSide$module$1 = null;
+  this.boxShadow$1 = null;
+  this.position$module$1 = null;
+  this.quotes$module$1 = null;
+  this.tableLayout$module$1 = null;
+  this.fontSize$module$1 = null;
+  this.fontSizeAdjust$1 = null;
+  this.fontFamily$1 = null;
+  this.fontWeight$module$1 = null;
+  this.font$1 = null;
+  this.fontFeatureSettings$1 = null;
+  this.fontStyle$module$1 = null;
+  this.clear$module$1 = null;
+  this.marginBottom$1 = null;
+  this.marginRight$1 = null;
+  this.marginTop$1 = null;
+  this.marginLeft$1 = null;
+  this.margin$module$1 = null;
+  this.top$1 = null;
+  this.width$1 = null;
+  this.bottom$1 = null;
+  this.letterSpacing$1 = null;
+  this.maxHeight$1 = null;
+  this.minWidth$1 = null;
+  this.minHeight$1 = null;
+  this.outline$1 = null;
+  this.outlineStyle$1 = null;
+  this.outlineWidth$module$1 = null;
+  this.outlineColor$module$1 = null;
+  this.overflowX$1 = null;
+  this.textAlignLast$1 = null;
+  this.textAlign$1 = null;
+  this.textDecoration$module$1 = null;
+  this.textIndent$1 = null;
+  this.textOverflow$module$1 = null;
+  this.textUnderlinePosition$module$1 = null;
+  this.textTransform$module$1 = null;
+  this.textShadow$1 = null;
+  this.transitionDelay$1 = null;
+  this.transition$1 = null;
+  this.transitionTimingFunction$1 = null;
+  this.transitionDuration$1 = null;
+  this.transitionProperty$1 = null;
+  this.visibility$module$1 = null;
+  this.whiteSpace$module$1 = null;
+  this.wordSpacing$1 = null;
+  this.zIndex$1 = null;
+  this.flex$1 = null;
+  this.flexBasis$1 = null;
+  this.flexGrow$1 = null;
+  this.flexShrink$1 = null;
+  this.alignContent$module$1 = null;
+  this.alignSelf$module$1 = null;
+  this.flexWrap$module$1 = null;
+  this.alignItems$module$1 = null;
+  this.justifyContent$module$1 = null;
+  this.flexDirection$module$1 = null;
+  this.href$1 = null;
+  this.alt$1 = null;
+  this.rel$1 = null;
+  this.src$1 = null;
+  this.xmlns$1 = null;
+  this.accept$1 = null;
+  this.charset$1 = null;
+  this.disabled$1 = null;
+  this.for$1 = null;
+  this.rows$1 = null;
+  this.cols$1 = null;
+  this.role$1 = null;
+  this.content$1 = null;
+  this.httpEquiv$1 = null;
+  this.media$1 = null;
+  this.colspan$1 = null;
+  this.rowspan$1 = null;
+  this.aria$module$1 = null;
+  this.scoped$1 = null;
+  this.high$1 = null;
+  this.low$1 = null;
+  this.optimum$1 = null;
+  this.unselectable$1 = null;
+  this.onblur$1 = null;
+  this.onchange$1 = null;
+  this.onfocus$1 = null;
+  this.onselect$1 = null;
+  this.onsubmit$1 = null;
+  this.onreset$1 = null;
+  this.oncontextmenu$1 = null;
+  this.oninput$1 = null;
+  this.oninvalid$1 = null;
+  this.onsearch$1 = null;
+  this.selected$1 = null;
+  this.onload$1 = null;
+  this.onafterprint$1 = null;
+  this.onbeforeprint$1 = null;
+  this.onbeforeunload$1 = null;
+  this.onhashchange$1 = null;
+  this.onmessage$1 = null;
+  this.onoffline$1 = null;
+  this.ononline$1 = null;
+  this.onpagehide$1 = null;
+  this.onpageshow$1 = null;
+  this.onpopstate$1 = null;
+  this.onresize$1 = null;
+  this.onstorage$1 = null;
+  this.onunload$1 = null;
+  this.onclick$1 = null;
+  this.ondblclick$1 = null;
+  this.ondrag$1 = null;
+  this.ondragend$1 = null;
+  this.ondragenter$1 = null;
+  this.ondragleave$1 = null;
+  this.ondragover$1 = null;
+  this.ondragstart$1 = null;
+  this.ondrop$1 = null;
+  this.onmousedown$1 = null;
+  this.onmousemove$1 = null;
+  this.onmouseout$1 = null;
+  this.onmouseover$1 = null;
+  this.onmouseup$1 = null;
+  this.onscroll$1 = null;
+  this.onwheel$1 = null;
+  this.onkeydown$1 = null;
+  this.onkeyup$1 = null;
+  this.onkeypress$1 = null;
+  this.onshow$1 = null;
+  this.ontoggle$1 = null;
+  this.onabort$1 = null;
+  this.oncanplay$1 = null;
+  this.oncanplaythrough$1 = null;
+  this.oncuechange$1 = null;
+  this.ondurationchange$1 = null;
+  this.onemptied$1 = null;
+  this.onended$1 = null;
+  this.onloadeddata$1 = null;
+  this.onloadedmetadata$1 = null;
+  this.onloadstart$1 = null;
+  this.onpause$1 = null;
+  this.onplay$1 = null;
+  this.onplaying$1 = null;
+  this.onprogress$1 = null;
+  this.onratechange$1 = null;
+  this.onseeked$1 = null;
+  this.onseeking$1 = null;
+  this.onstalled$1 = null;
+  this.onsuspend$1 = null;
+  this.ontimeupdate$1 = null;
+  this.onvolumechange$1 = null;
+  this.onwaiting$1 = null;
+  this.onerror$1 = null;
+  this.oncopy$1 = null;
+  this.oncut$1 = null;
+  this.onpaste$1 = null;
+  this.action$1 = null;
+  this.autocomplete$1 = null;
+  this.autofocus$1 = null;
+  this.checked$1 = null;
+  this.enctype$1 = null;
+  this.formA$1 = null;
+  this.formaction$1 = null;
+  this.formenctype$1 = null;
+  this.formmethod$1 = null;
+  this.formnovalidate$1 = null;
+  this.formtarget$1 = null;
+  this.heightA$1 = null;
+  this.list$1 = null;
+  this.max$1 = null;
+  this.min$1 = null;
+  this.multiple$1 = null;
+  this.maxlength$1 = null;
+  this.method$1 = null;
+  this.name$1 = null;
+  this.pattern$1 = null;
+  this.placeholder$1 = null;
+  this.readonly$1 = null;
+  this.required$1 = null;
+  this.size$1 = null;
+  this.step$1 = null;
+  this.target$1 = null;
+  this.type$1 = null;
+  this.tpe$1 = null;
+  this.value$1 = null;
+  this.widthA$1 = null;
+  this.accesskey$1 = null;
+  this.class$1 = null;
+  this.cls$1 = null;
+  this.contenteditable$1 = null;
+  this.contextmenu$1 = null;
+  this.data$module$1 = null;
+  this.dir$1 = null;
+  this.draggable$1 = null;
+  this.dropzone$1 = null;
+  this.hidden$1 = null;
+  this.id$1 = null;
+  this.lang$1 = null;
+  this.spellcheck$1 = null;
+  this.style$1 = null;
+  this.tabindex$1 = null;
+  this.title$1 = null;
+  this.translate$1 = null;
+  this.bitmap$0$1 = $m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong();
+  this.bitmap$1$1 = $m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong();
+  this.bitmap$2$1 = $m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong();
+  this.bitmap$3$1 = $m_sjsr_RuntimeLong$().Zero__sjsr_RuntimeLong()
+}
+$c_Lscalatags_JsDom$short$$times$.prototype = new $h_O();
+$c_Lscalatags_JsDom$short$$times$.prototype.constructor = $c_Lscalatags_JsDom$short$$times$;
+/** @constructor */
+function $h_Lscalatags_JsDom$short$$times$() {
+  /*<skip>*/
+}
+$h_Lscalatags_JsDom$short$$times$.prototype = $c_Lscalatags_JsDom$short$$times$.prototype;
+$c_Lscalatags_JsDom$short$$times$.prototype.init___ = (function() {
+  $n_Lscalatags_JsDom$short$$times$ = this;
+  $f_Lscalatags_generic_MouseEventAttrs__$$init$__V(this);
+  return this
+});
+$c_Lscalatags_JsDom$short$$times$.prototype.placeholder__Lscalatags_generic_Attr = (function() {
+  var b = this.bitmap$2$1;
+  var hi = (1073741824 & b.hi$2);
+  if ((hi === 0)) {
+    return this.placeholder$lzycompute__p1__Lscalatags_generic_Attr()
+  } else {
+    return this.placeholder$1
+  }
+});
+$c_Lscalatags_JsDom$short$$times$.prototype.scalatags$generic$MouseEventAttrs$$undsetter$und$ondrag$und$eq__Lscalatags_generic_Attr__V = (function(x$1) {
+  this.ondrag$1 = x$1
+});
+$c_Lscalatags_JsDom$short$$times$.prototype.placeholder$lzycompute__p1__Lscalatags_generic_Attr = (function() {
+  var b = this.bitmap$2$1;
+  var hi = (1073741824 & b.hi$2);
+  if ((hi === 0)) {
+    this.placeholder$1 = $f_Lscalatags_generic_Util__attr__T__Lscalatags_generic_Namespace__Z__Lscalatags_generic_Attr(this, "placeholder", null, false);
+    var b$1 = this.bitmap$2$1;
+    var lo = b$1.lo$2;
+    var hi$1 = (1073741824 | b$1.hi$2);
+    this.bitmap$2$1 = new $c_sjsr_RuntimeLong().init___I__I(lo, hi$1)
+  };
+  return this.placeholder$1
+});
+var $d_Lscalatags_JsDom$short$$times$ = new $TypeData().initClass({
+  Lscalatags_JsDom$short$$times$: 0
+}, false, "scalatags.JsDom$short$$times$", {
+  Lscalatags_JsDom$short$$times$: 1,
+  O: 1,
+  Lscalatags_JsDom$Cap: 1,
+  Lscalatags_generic_Util: 1,
+  Lscalatags_generic_LowPriUtil: 1,
+  Lscalatags_jsdom_TagFactory: 1,
+  Lscalatags_generic_Attrs: 1,
+  Lscalatags_generic_InputAttrs: 1,
+  Lscalatags_generic_GlobalAttrs: 1,
+  Lscalatags_generic_ClipboardEventAttrs: 1,
+  Lscalatags_generic_MediaEventAttrs: 1,
+  Lscalatags_generic_SharedEventAttrs: 1,
+  Lscalatags_generic_MiscellaneousEventAttrs: 1,
+  Lscalatags_generic_KeyboardEventAttrs: 1,
+  Lscalatags_generic_MouseEventAttrs: 1,
+  Lscalatags_generic_WindowEventAttrs: 1,
+  Lscalatags_generic_FormEventAttrs: 1,
+  Lscalatags_generic_Styles: 1,
+  Lscalatags_generic_StyleMisc: 1
+});
+$c_Lscalatags_JsDom$short$$times$.prototype.$classData = $d_Lscalatags_JsDom$short$$times$;
+var $n_Lscalatags_JsDom$short$$times$ = (void 0);
+function $m_Lscalatags_JsDom$short$$times$() {
+  if ((!$n_Lscalatags_JsDom$short$$times$)) {
+    $n_Lscalatags_JsDom$short$$times$ = new $c_Lscalatags_JsDom$short$$times$().init___()
+  };
+  return $n_Lscalatags_JsDom$short$$times$
+}
+/** @constructor */
 function $c_sci_StringOps() {
   $c_O.call(this);
   this.repr$1 = null
@@ -12591,6 +13074,9 @@ $c_Lscalatags_JsDom$all$.prototype.h1$lzycompute__p1__Lscalatags_JsDom$TypedTag 
     this.bitmap$0$1 = new $c_sjsr_RuntimeLong().init___I__I(lo$1, hi)
   };
   return this.h1$1
+});
+$c_Lscalatags_JsDom$all$.prototype.scalatags$generic$MouseEventAttrs$$undsetter$und$ondrag$und$eq__Lscalatags_generic_Attr__V = (function(x$1) {
+  this.ondrag$1 = x$1
 });
 $c_Lscalatags_JsDom$all$.prototype.div$lzycompute__p1__Lscalatags_JsDom$TypedTag = (function() {
   var b = this.bitmap$0$1;
@@ -15456,6 +15942,9 @@ $c_sci_Stream.prototype.sameElements__sc_GenIterable__Z = (function(that) {
 $c_sci_Stream.prototype.thisCollection__sc_Traversable = (function() {
   return this
 });
+$c_sci_Stream.prototype.equals__O__Z = (function(that) {
+  return ((this === that) || $f_sc_GenSeqLike__equals__O__Z(this, that))
+});
 $c_sci_Stream.prototype.flatMap__F1__scg_CanBuildFrom__O = (function(f, bf) {
   if ($is_sci_Stream$StreamBuilder(bf.apply__O__scm_Builder(this))) {
     if (this.isEmpty__Z()) {
@@ -15480,9 +15969,6 @@ $c_sci_Stream.prototype.flatMap__F1__scg_CanBuildFrom__O = (function(f, bf) {
   } else {
     return $f_sc_TraversableLike__flatMap__F1__scg_CanBuildFrom__O(this, f, bf)
   }
-});
-$c_sci_Stream.prototype.equals__O__Z = (function(that) {
-  return ((this === that) || $f_sc_GenSeqLike__equals__O__Z(this, that))
 });
 $c_sci_Stream.prototype.drop__I__sc_LinearSeqOptimized = (function(n) {
   return this.drop__I__sci_Stream(n)
@@ -16165,12 +16651,12 @@ $c_sci_List.prototype.apply__I__O = (function(n) {
 $c_sci_List.prototype.lengthCompare__I__I = (function(len) {
   return $f_sc_LinearSeqOptimized__lengthCompare__I__I(this, len)
 });
-$c_sci_List.prototype.sameElements__sc_GenIterable__Z = (function(that) {
-  return $f_sc_LinearSeqOptimized__sameElements__sc_GenIterable__Z(this, that)
-});
 $c_sci_List.prototype.apply__O__O = (function(v1) {
   var n = $uI(v1);
   return $f_sc_LinearSeqOptimized__apply__I__O(this, n)
+});
+$c_sci_List.prototype.sameElements__sc_GenIterable__Z = (function(that) {
+  return $f_sc_LinearSeqOptimized__sameElements__sc_GenIterable__Z(this, that)
 });
 $c_sci_List.prototype.toList__sci_List = (function() {
   return this
@@ -16234,14 +16720,14 @@ $c_sci_List.prototype.drop__I__sci_List = (function(n) {
   };
   return these
 });
-$c_sci_List.prototype.$$plus$plus__sc_GenTraversableOnce__scg_CanBuildFrom__O = (function(that, bf) {
-  return ((bf === $m_sci_List$().ReusableCBFInstance$2) ? that.seq__sc_TraversableOnce().toList__sci_List().$$colon$colon$colon__sci_List__sci_List(this) : $f_sc_TraversableLike__$$plus$plus__sc_GenTraversableOnce__scg_CanBuildFrom__O(this, that, bf))
+$c_sci_List.prototype.seq__sc_Seq = (function() {
+  return this
 });
 $c_sci_List.prototype.length__I = (function() {
   return $f_sc_LinearSeqOptimized__length__I(this)
 });
-$c_sci_List.prototype.seq__sc_Seq = (function() {
-  return this
+$c_sci_List.prototype.$$plus$plus__sc_GenTraversableOnce__scg_CanBuildFrom__O = (function(that, bf) {
+  return ((bf === $m_sci_List$().ReusableCBFInstance$2) ? that.seq__sc_TraversableOnce().toList__sci_List().$$colon$colon$colon__sci_List__sci_List(this) : $f_sc_TraversableLike__$$plus$plus__sc_GenTraversableOnce__scg_CanBuildFrom__O(this, that, bf))
 });
 $c_sci_List.prototype.take__I__O = (function(n) {
   return this.take__I__sci_List(n)

@@ -1,12 +1,15 @@
 package autocomplete.webapp
 
 import main.scala.autocomplete.webapp.PrefixTrie
+
 import scala.scalajs.js.JSApp
 import org.scalajs.dom
 import dom._
-import window.{ clearTimeout, setTimeout }
+import window.{clearTimeout, setTimeout}
 import org.scalajs.dom.html._
+
 import scalatags.JsDom.all._
+import scalatags.JsDom.short.*
 
 object Autocomplete extends JSApp {
   def main(): Unit = {
@@ -22,14 +25,10 @@ object DOM {
   class InputBox {
     var wordUseHist = Map[String, Int]().withDefaultValue(0)
     val pT = PrefixTrie()
-    val i: Input = input.render
+    val i: Input = input(*.placeholder:="trie me out").render
     val u: UList = ul.render
     val container: Div = div.render
     val debouncer: () => Unit = getDebouncer(onKeyUp)
-
-    i.setAttribute("id", "input")
-    u.setAttribute("id", "suggestions")
-
 
     document.body.appendChild(
       container.appendChild(
