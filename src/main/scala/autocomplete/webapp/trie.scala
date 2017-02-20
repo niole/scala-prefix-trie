@@ -9,11 +9,11 @@ case class PrefixTrie(
   ) {
  children = addWord(letters, word)
  var fullWord = ""
- setWord(word)
+ setWord(word, children.isEmpty)
 
  private[this] def getWord: String = fullWord
- private[this] def setWord(newWord: String): Unit = {
-  if (letters.isEmpty) {
+ private[this] def setWord(newWord: String, shouldSet: Boolean = true): Unit = {
+  if (shouldSet) {
    fullWord = newWord
   }
  }
