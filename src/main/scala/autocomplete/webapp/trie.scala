@@ -1,15 +1,7 @@
-//every level is a sorted list with single character prefixes
-object Main extends App {
- val word = "abc"
- val w2 = "abc"
- val T = PrefixTrie(None, word.toList, word)
- T.addWord(w2.toList, w2)
- val matches = T.findMatches(word.toList, List[String]())
- val ms = T.findMatches(w2.toList, List[String]())
-}
+package main.scala.autocomplete.webapp
 
 
-case class PrefixTrie(chr: Option[Char], letters: List[Char], private val word: String, var children: List[PrefixTrie] = List[PrefixTrie]()) {
+case class PrefixTrie(chr: Option[Char] = None, letters: List[Char] = List[Char](), private val word: String = "", var children: List[PrefixTrie] = List[PrefixTrie]()) {
  children = addWord(letters, word)
  var fullWord = ""
  setWord(word)
@@ -45,16 +37,16 @@ case class PrefixTrie(chr: Option[Char], letters: List[Char], private val word: 
   case head::tail =>
      //keep going along matching trail
      //if stop matching, return found
-     val updatedFound = accumulateWord(found)
      val matchingChild = getMatchingChild(head)
-     matchingChild.map(child => child.findMatches(tail, updatedFound)).getOrElse(updatedFound)
+     val ms = matchingChild.map(child => child.findMatches(tail, found)).getOrElse(found)
+     ms
  }
 
  def getAllPossibilities(found: List[String]): List[String] = {
   if (children.nonEmpty) {
    children.flatMap(child => child.findMatches(List[Char](), found))
   }
-  found
+  else found
  }
 
  def getMatchingChild(chr: Char): Option[PrefixTrie] = {
