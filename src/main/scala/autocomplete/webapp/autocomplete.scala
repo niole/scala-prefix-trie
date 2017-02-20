@@ -19,19 +19,20 @@ object Autocomplete extends JSApp {
 object DOM {
 
   class InputBox {
+    var wordUseHist = Map[String, Int]().withDefaultValue(0)
     val pT = PrefixTrie()
     val i: Input = input.render
-    i.setAttribute("id", "input")
-
     val u: UList = ul.render
+    val container: Div = div.render
+
+    i.setAttribute("id", "input")
     u.setAttribute("id", "suggestions")
 
-    val container: Div = div.render
 
     document.body.appendChild(
       container.appendChild(
         div(
-          h1("Autocomplete"),
+          h1("Trie Autocomplete"),
           div(i),
           u
         ).render
@@ -41,6 +42,7 @@ object DOM {
     i.onkeyup = (e: dom.Event) => {
       val output = i.value
       val lastWord = getLastWord(output)
+      addWordToHist(lastWord)
 
       if (output != "") {
         val chrs = lastWord.toList
@@ -63,14 +65,16 @@ object DOM {
       u
     }
 
-    def removeAllLiElements: Unit = {
-      u.innerHTML = ""
-    }
+    def getPrioritizedMatches(matches: List[String]): List[String] = matches.sortWith(wordUseHist(_) > wordUseHist(_))
+
+    def addWordToHist(word: String): Unit = wordUseHist += (word -> (wordUseHist(word) + 1))
+
+    def removeAllLiElements: Unit = u.innerHTML = ""
 
     def getRenderedMatches(lastWord: List[Char]): List[LI] = {
       val matches = pT.findMatches(lastWord)
       for {
-        m <- matches
+        m <- getPrioritizedMatches(matches)
       } yield li(m).render
     }
 
